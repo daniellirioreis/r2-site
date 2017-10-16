@@ -1,0 +1,32 @@
+<h4>Listagem de Posts</h4>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th width="30%">Título</th>
+      <th colspan="2" width="1%"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td>
+	          <%= link_to edit_post_path(post), role: 'button' do %>
+	            <h5 title="Editar"><i class="fa fa-pencil" aria-hidden="true"></i></h5>
+	          <% end %>
+			 	</td>
+	      <td>
+					<%= link_to post, method: :delete, data: { confirm: 'Confirma exclusão ?' }, role: "button" do %>
+						<h5 title="Apagar"><i class="fa fa-trash" aria-hidden="true"></i></h5>            
+					<% end %>
+				</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo Post', new_post_path, class:'btn btn-success' %>
